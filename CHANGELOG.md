@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/davinov/test-release-please-hotfixes/compare/v1.0.0...v2.0.0) (2024-05-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* change 2
+
+### Features
+
+* change 2 ([da7eeed](https://github.com/davinov/test-release-please-hotfixes/commit/da7eeed62277baed7466c515ea20807255959643))
+
 ## 1.0.0 (2024-05-29)
 
 
