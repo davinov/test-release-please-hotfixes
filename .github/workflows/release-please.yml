@@ -1,0 +1,22 @@
+on:
+  push:
+    branches:
+      - main
+      - 'release/**'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+name: release-please
+#  This job creates a Pull Request on master and releases/** branch
+#  to prepare a new release. Once this PR is merged, it creates the associated
+#  tag and release in GitHub. Then, Jenkins picks up to build a release package.
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v4
+        with:
+          release-type: node

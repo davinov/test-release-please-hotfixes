@@ -1,0 +1,24 @@
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.0'
+
+name: release-branch
+#  Once a minor or major release is out, this workflow creates a dedicated branch,
+#  so we can patch it in the future, while the release is supported.
+
+jobs:
+  create-release-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get release version
+        id: get_release_version
+        run: echo "release_version=$(echo $GITHUB_REF_NAME | cut -d "." -f 1,2)" >> $GITHUB_OUTPUT
+
+      - name: Create branch
+        uses: peterjgrainger/action-create-branch@v2.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: 'release/${{ steps.get_release_version.outputs.release_version }}'
+          sha: '${{ github.sha }}'
